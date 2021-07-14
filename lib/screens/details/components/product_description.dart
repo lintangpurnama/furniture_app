@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:furniture_app/models/Product.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
@@ -13,6 +14,15 @@ class ProductDescription extends StatelessWidget {
 
   final Product product;
   final Function press;
+
+void costumLaunch(command) async {
+  if (await canLaunch(command)){
+    await launch(command);
+  } else {
+    canLaunch(" could not run $command");
+  }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +81,49 @@ class ProductDescription extends StatelessWidget {
                 ),
               ),
             ),
+            
+            Padding(padding: EdgeInsets.all(defaultSize * 1.5)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+            SizedBox(
+              child: IconButton(icon: SvgPicture.asset("assets/whatsapp.svg"),
+              onPressed: (){
+                costumLaunch('https://wa.me/6289680525541');
+              },
+              
+              ),
+            ),
+            SizedBox(
+              child: IconButton(icon: SvgPicture.asset("assets/icons/telephone.svg"),
+              onPressed: (){
+                costumLaunch('tel:+6289680525541');
+              },
+              ),
+            ),
+            SizedBox(
+              child: IconButton(icon: SvgPicture.asset("assets/icons/gmail.svg"),
+              onPressed: (){
+                costumLaunch('mailto:lintangpurnama1@gmail.com');
+              },
+              ),
+            ),
+            SizedBox(
+              child: IconButton(icon: SvgPicture.asset("assets/icons/comments.svg"),
+              onPressed: (){
+                costumLaunch('sms:+6289680525541');
+              },
+              ),
+            )
+
+              ],
+            )
           ],
         ),
+        
       ),
     );
+    
   }
 }
+

@@ -30,7 +30,10 @@ dependencies:
   flutter_svg: ^0.17.4 #It help us to use SVG on our app dont use 0.18.*
   google_fonts: ^1.1.0 # We can use any fonts from google fonts
   http: ^0.12.2 # It help us to  fatch data from API
-
+  shimmer: ^2.0.0
+  lottie: ^1.1.0
+  url_launcher: ^6.0.9
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,6 +49,7 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/
     - assets/icons/
     - assets/ripple.gif
     - assets/spinner.gif
